@@ -7,6 +7,7 @@
     <title>SignCRM</title>
     <link href="{{ url('/admin/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url('admin/css/bootstrap-icons.min.css') }}" />
+    @stack('page_css')
 </head>
 
 <body class="wm-100">

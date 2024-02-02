@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('zip_code');
             $table->string('address');
             $table->morphs('addressable');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
