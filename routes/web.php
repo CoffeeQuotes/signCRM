@@ -35,5 +35,9 @@ Route::prefix('admin')->group(function () {
         // Organization 
         Route::match(['get', 'post'], 'add-edit-organization/{id?}', [LeadController::class, 'addOrganization'])->name('admin_add_edit_organization');
         Route::get('organization',[LeadController::class, 'organizations'])->name('admin_organizations');
+
+        // Lead Group
+        Route::match(['get', 'post'], 'add-edit-lead-group/{id?}', [LeadController::class, 'addLeadGroup'])->name('admin_add_edit_lead_group');
+        
     });
 });

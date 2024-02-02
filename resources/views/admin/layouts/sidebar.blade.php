@@ -15,6 +15,10 @@
                 <a class="text-decoration-none text-white" href="{{ route('admin_organizations') }}"> <i class="bi bi-building-fill"></i>
                     Organizations</a>
             </li>
+            <li>
+                <a class="text-decoration-none text-white" href="{{ route('admin_lead_group') }}"> <i class="bi bi-building-fill"></i>
+                    Lead Group</a>
+            </li>
         </ul>
     </div>
 </div>

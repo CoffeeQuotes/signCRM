@@ -128,4 +128,50 @@ class LeadController extends Controller
         }
         return view('admin.leads.add_edit_organization')->with(compact('page_title', 'organization'));
     }
+
+    /***
+     * addLeadGroup
+     * */
+    public function addLeadGroup(Request $request, $id = null)
+    {
+         if ($id == '') {
+            $page_title = 'New Organization';
+            $organization = new Organization();
+            $message = 'New organization added successfully.';
+        } else {
+            $page_title = 'Edit organization';
+            $organization = Organization::findOrFail($id);
+            $message = 'Update person successfully.';
+        }
+        if ($request->isMethod('post')) {
+
+            $rules = [
+                'name' => 'required|regex:/^[\pL\s]+$/u|min:3|max:255',
+                'lead_group_id' => 'required',
+                'admin_id' => 'required'
+            ];
+            $customMessage = [
+                // Firstname
+                'name.required' => 'Please provide the firstname.',
+                'name.regex' => 'Please only enter valid firstname.',
+                'name.min' => 'Firstname must be atleast 3 characters long.',
+                'name.max' => 'Firstname must be less than 255 characters.',
+                // Lead Group
+                'lead_group_id.required' => 'Please select valid lead group',
+                'admin_id.required' => 'Please select owner'
+            ];
+
+            $this->validate($request, $rules, $customMessage);
+            $organization->name = $request->name;
+            $organization->lead_group_id = $request->lead_group_id;
+            $organization->job_title = $request->job_title??'Not Available';
+            $organization->admin_id = $request->admin_id;
+            if ($organization->save()) {
+                return redirect()->route('admin_organizations')->with('success_message', $message);
+            } else {
+                return redirect()->route('admin_organizations')->with('error_message', 'Something went wrong.');
+            }
+        }
+        return view('admin.leads.add_edit_organization')->with(compact('page_title', 'organization'));   
+    }
 }
