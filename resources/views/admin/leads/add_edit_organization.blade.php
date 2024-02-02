@@ -19,28 +19,28 @@
                 </div>
             </div>
             @endif
-            <form id="personForm" action="{{ route('admin_add_edit_person') }}" method="post">
+            <form id="organizationForm" action="{{ route('admin_add_edit_organization') }}" method="post">
                 @csrf
                 <div class="mb-3 form-group">
                     <label for="name" class="form-label">Name<sup class="text-danger">*</sup></label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="{{ old('name', optional($person)->name) }}" />
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="{{ old('name', optional($organization)->name) }}" />
                 </div>
                 <div class="mb-3 form-group">
                     <label for="lead_group_id" class="form-label">Lead Group<sup class="text-danger">*</sup></label>
                     <select class="form-select" name="lead_group_id" id="lead_group_id">
                         <option value="" disabled selected>Choose a lead group</option>
-                        <option value="1" @if (old('lead_group_id')==1 || $person->lead_group_id == 1) selected @endif>One</option>
-                        <option value="2" @if (old('lead_group_id')==2 || $person->lead_group_id == 2) selected @endif>Two</option>
-                        <option value="3" @if (old('lead_group_id')==3 || $person->lead_group_id == 3) selected @endif>Three</option>
+                        <option value="1" @if (old('lead_group_id')==1 || $organization->lead_group_id == 1) selected @endif>One</option>
+                        <option value="2" @if (old('lead_group_id')==2 || $organization->lead_group_id == 2) selected @endif>Two</option>
+                        <option value="3" @if (old('lead_group_id')==3 || $organization->lead_group_id == 3) selected @endif>Three</option>
                     </select>
                 </div>
                 <div class="mb-3 form-group">
                     <label for="admin_id" class="form-label">Owner<sup class="text-danger">*</sup></label>
                     <select class="form-select" name="admin_id" id="admin_id">
                         <option value="" disabled selected>Choose a Owner</option>
-                        <option value="1" @if (old('admin_id')==1 || $person->admin_id == 1) selected @endif>One</option>
-                        <option value="2" @if (old('admin_id')==2 || $person->admin_id == 2) selected @endif>Two</option>
-                        <option value="3" @if (old('admin_id')==3 || $person->admin_id == 3) selected @endif>Three</option>
+                        <option value="1" @if (old('admin_id')==1 || $organization->admin_id == 1) selected @endif>One</option>
+                        <option value="2" @if (old('admin_id')==2 || $organization->admin_id == 2) selected @endif>Two</option>
+                        <option value="3" @if (old('admin_id')==3 || $organization->admin_id == 3) selected @endif>Three</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -54,10 +54,10 @@
     $(document).ready(function() {
         $.validator.setDefaults({
             submitHandler: function() {
-                $('#personForm').submit()
+                $('#organizationForm').submit()
             }
         });
-        $('#personForm').validate({
+        $('#organizationForm').validate({
             rules: {
                 name: {
                     required: true,
@@ -78,7 +78,7 @@
                     required: "Please choose a lead group" // Custom error message for the required rule
                 },
                 admin_id: {
-                    required: "Please choose a lead group" // Custom error message for the required rule
+                    required: "Please choose a owner" // Custom error message for the required rule
                 }
             },
             errorElement: 'span',

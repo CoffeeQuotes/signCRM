@@ -27,7 +27,13 @@ Route::prefix('admin')->group(function () {
         // sandbox route
         // Route::get('index', [AdminController::class, 'index']);
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard');
+       
+        // Person
         Route::match(['get', 'post'], 'add-edit-person/{id?}', [LeadController::class, 'addPerson'])->name('admin_add_edit_person');
         Route::get('persons', [LeadController::class, 'persons'])->name('admin_persons');
+
+        // Organization 
+        Route::match(['get', 'post'], 'add-edit-organization/{id?}', [LeadController::class, 'addOrganization'])->name('admin_add_edit_organization');
+        Route::get('organization',[LeadController::class, 'organizations'])->name('admin_organizations');
     });
 });

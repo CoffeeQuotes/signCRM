@@ -58,7 +58,7 @@
     <script src="{{ url('admin/js/dataTables.bootstrap5.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            new DataTable('#example');
+            new DataTable('#example')
         })
     </script>
 @endpush

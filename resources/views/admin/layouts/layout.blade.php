@@ -38,7 +38,7 @@
 
         });
     </script>
-    @stack('page_script');
+    @stack('page_script')
 </body>
 
 </html>

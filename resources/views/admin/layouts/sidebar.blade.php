@@ -11,6 +11,10 @@
                         class="bi bi-people"></i>
                     People</a>
             </li>
+            <li>
+                <a class="text-decoration-none text-white" href="{{ route('admin_organizations') }}"> <i class="bi bi-building-fill"></i>
+                    Organizations</a>
+            </li>
         </ul>
     </div>
 </div>
